@@ -1,0 +1,73 @@
+command=~/.config/i3blocks/$BLOCK_NAME
+separator_block_width=9
+
+
+#Speed
+[bandwidth]
+interval=1
+color=#ee9572
+
+# Battery indicator
+[battery]
+interval=5
+color=#8fee72
+
+# Network interface monitoring
+[iface]
+color=#729dee
+interval=1
+
+[ip]
+command=wget http://ipinfo.io/ip -qO -
+interval=5
+color=#729dee
+
+[brightness]
+label=
+command=light
+interval=1
+color=#f7debf
+
+# Volume indicator
+[volume]
+interval=1
+color=#f7debf
+signal=10
+
+# CPU usage
+[cpu_usage]
+label=
+color=#f7debf
+interval=10
+
+# Memory usage
+[memory]
+label=
+interval=30
+color=#f7debf
+
+# Disk usage
+[disk]
+label=
+color=#f7debf
+interval=30
+
+# Date & Calendar
+[rofi_calendar]
+label=
+color=#f7debf
+interval=3600
+
+# Time
+[time]
+label=
+color=#f7debf
+command=date '+%H:%M:%S'
+interval=1
+
+# Guess the weather hourly
+[weather]
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=3600
+color=#A4C2F4
+
