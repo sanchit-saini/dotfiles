@@ -1,3 +1,17 @@
+local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = vim.fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+  print "Installing packer close and reopen Neovim..."
+  vim.cmd [[packadd packer.nvim]]
+end
+
 vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
@@ -20,6 +34,9 @@ require('packer').startup(function(use)
 	use 'itchyny/lightline.vim'
     -- manaul intervention needed : goto module directory and run `yarn install`
     use { 'iamcco/markdown-preview.nvim' }
+    if PACKER_BOOTSTRAP then
+        require("packer").sync()
+    end
 end)
 
 -- default options
