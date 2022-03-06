@@ -1,0 +1,4 @@
+#!/bin/bash
+hdd="$(df -h | awk 'NR==6{print $4}')"
+icon=""
+echo -e "\x06$icon $hdd"

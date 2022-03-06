@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# colors
+green="\033[0;32m"
+megenta="\033[0;35m"
+cyan="\033[0;36m"
+
+# global 
+dir=""
+total=""
+showdir=0
+showrec=1
+
+calculate_watchtime() {
+    echo -e "$(mediainfo --Inform="Video;%Duration/String4%\n" "$1")"
+}
+
+format_watchtime() {
+    awk -F: '{a+=$1*3600+$2*60+$3}END{printf"%02d hour %02d min %02d sec", 
+              a/3600, a%3600/60, a%3600%60}'  <<< "$1"
+}
+
+show_dir() {
+    for d in "$1"/*; do
+        if [[ -d "$d" ]];then
+            time=$(calculate_watchtime "$d")
+            if [[ $2 != 0 ]];then
+                total+=$time
+            fi
+            format=$(format_watchtime "$time")
+            echo -e "$green $format $megenta [$d]"
+            if [[ $showrec != 1 ]];then
+                show_dir "$d" "0"
+            fi
+        fi
+    done
+}
+
+output() {
+    if [[ $showdir == 0 ]];then
+        show_dir "$1"
+    fi
+
+    # if watchtime is already calculated don't need calculate it again
+    if [[ $total == "" ]];then
+        total=$(calculate_watchtime "$1")
+    fi
+
+    format=$(format_watchtime "$total")
+    echo -e "$cyan \nTotal : $format"
+}
+
+usage() {
+    echo "usage: $(basename $0) [-h][-H][-r][-d PATH]   "
+    echo "List watchtime of video files                 "
+    echo "  -d          Path to the directory           "
+    echo "  -r          recursively list directories    "
+    echo "  -H          hide directory listing          "
+    echo "  -h          show help                       "
+    exit 1
+}
+
+main() {
+    if [[ ${#} -eq 0 ]]; then
+        usage
+    fi
+    while getopts ":hHrd:" arg; do
+        case $arg in
+            h) usage         ;;
+            d) dir="$OPTARG" ;;
+            H) showdir=1     ;;
+            r) showrec=0     ;;
+            ?) echo "Invalid option: -$OPTARG"
+               usage         ;;
+        esac
+    done
+
+    output "$dir"
+}
+
+main "$@"
+

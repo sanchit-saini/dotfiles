@@ -1,0 +1,14 @@
+#!/bin/sh
+[ "$(pulsemixer --get-mute)" = "1" ] && printf "\x0D" && exit
+
+vol=$(pulsemixer --get-volume | awk '{print $1}')
+
+if [ "$vol" -gt "70" ]; then
+	icon=""
+elif [ "$vol" -lt "30" ]; then
+	icon=""
+else
+	icon=""
+fi
+
+echo -e "\x0D$icon $vol"

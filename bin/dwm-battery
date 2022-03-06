@@ -32,7 +32,7 @@ elif [[ "$PERCENT" -gt "0" ]] && [[ "$PERCENT" -lt "25" ]]; then
   fi
 
 if [[ "$TIME" = "until" ]]; then
-	echo "$symbol $PERCENTAGE Charged"
+	echo -e "$symbol $PERCENTAGE Charged"
 else
-	echo "$symbol $PERCENTAGE $TIME"
+	echo -e "\x0C$symbol $PERCENTAGE $TIME"
 fi

@@ -1,0 +1,4 @@
+#!/bin/bash
+level=$(light)
+icon=" "
+echo -e "\x07$icon$level"

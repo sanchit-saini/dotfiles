@@ -1,0 +1,16 @@
+#~/usr/bin/bash
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage:ytpl-title <youtube playlist url>"
+  exit
+fi
+
+title=$(echo "$1" | sed "s|.*list=||")
+file=/tmp/$title
+
+if [ ! -f $file ]; then
+  youtube-dl -J "$1" > $file
+fi
+
+cat $file | jq -r '.entries[].title'
+

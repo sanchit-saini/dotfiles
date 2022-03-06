@@ -5,9 +5,9 @@
 *******************************************************************************/
 
 * {
-    background-color:            #080808;
+    background-color:            #212121;
     text-color:                  #d3d7cf;
-    selbg:                       #215d9c;
+    selbg:                       #7b84a8;
     actbg:                       #262626;
     urgbg:                       #e53935;
     winbg:                       #26c6da;
@@ -32,10 +32,10 @@
 }
 
 #window {
-	location:    east;
-	anchor:      east;
-	height:      100%;
-	width:       20%;
+	location:    center;
+	anchor:      center;
+	height:      80%;
+	width:       50%;
 	orientation: horizontal;
 	children:    [mainbox];
 }
@@ -82,10 +82,10 @@
   text-color:       @urgent-foreground;
 }
 
-#element.normal.active {
+/*#element.normal.active {
     background-color: @active-background;
     text-color:       @active-foreground;
-}
+}*/
 
 #element.selected.normal {
     background-color: @selected-normal-background;
@@ -94,7 +94,7 @@
 	border-color:	  @active-background;
 }
 
-#element.selected.urgent {
+/*#element.selected.urgent {
     background-color: @selected-urgent-background;
     text-color:       @selected-urgent-foreground;
 }
@@ -118,5 +118,5 @@
     background-color: @active-background;
     text-color:       @active-foreground;
 }
-
+*/
 /* vim:ft=css */

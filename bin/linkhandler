@@ -1,0 +1,11 @@
+#!/bin/sh
+
+DIALOG_RESULT=$(echo -e 'vimb\nfirefox' | rofi -theme sidetab -dmenu -i -p "[Arch] : " -hide-scrollbar -tokenize -lines 4 -eh 1 -width 1920 -location 1 -padding 20 -disable-history -font "RobotoMono 15")
+sleep 1;
+if [ "$DIALOG_RESULT" = "vimb" ];
+then
+    vimb $1
+elif [ "$DIALOG_RESULT" = "firefox" ];
+then
+    firefox-developer-edition $1
+fi
