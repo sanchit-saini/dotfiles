@@ -1,0 +1,2 @@
+sudo docker run -v $HOME/Workspace/docker:/root -it bioconductor/bioconductor_docker:$1 bash
+
