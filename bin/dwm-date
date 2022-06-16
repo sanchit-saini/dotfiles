@@ -1,4 +1,5 @@
 #!/bin/bash
+source  colors
 dte=$(date +"%a, %B %d %l:%M%p"| sed 's/  / /g')
 icon=""
-echo -e "\x0D$icon$dte"
+echo -e "^c$darkblue^$icon$dte"

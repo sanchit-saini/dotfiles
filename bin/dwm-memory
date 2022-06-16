@@ -1,5 +1,6 @@
 #!/bin/bash 
 
-mem="$(free -m | awk 'NR==2{printf "%s/%sMB\n", $3,$2,$3*100/$2 }')"
-icon=" "
-echo -e "\x0B$icon$mem"
+#mem="$(free -m | awk 'NR==2{printf "%s/%sMB\n", $3,$2,$3*100/$2 }')"
+mem="$(free -m | awk 'NR==2{printf "%s M\n", $3,$2,$3*100/$2 }')"
+icon=
+echo -e "$icon $mem"

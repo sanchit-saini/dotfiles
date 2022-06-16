@@ -1,4 +1,5 @@
 #!/bin/bash
+source colors
 level=$(light)
 icon=" "
-echo -e "\x07$icon$level"
+echo -e "^c$blue^$icon$level"
