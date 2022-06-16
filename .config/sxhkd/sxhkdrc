@@ -1,0 +1,51 @@
+super + Return
+    st
+
+super + d
+    rofi -show run -modi run,ssh, drun -theme sidetab
+
+super + shift + Return
+    st -c Gimp -g 80x14+450+450
+
+super + w
+    rofi -show window -modi window -theme sidetab
+
+super + n
+    st -e nmtui-connect
+
+super + r
+    st -e ranger
+
+super + shift + t
+    st -e htop
+
+super + shift + e
+    close-menu
+
+Print
+    maim ~/Screenshots/$(date '+%y%m%d-%H%M-%S').png
+
+shift + Print
+    maim -s ~/Screenshots/$(date '+%y%m%d-%H%M-%S').png
+
+super + Print
+    maim | xclip -selection clipboard -t image/png
+
+super + shift + Print
+    maim -s | xclip -selection clipboard -t image/png
+
+super + F1
+    pulsemixer --toggle-mute
+
+super + F2
+    pulsemixer --change-volume -5
+
+super + F3
+    pulsemixer --change-volume +5
+
+super + F11
+    light -U 5
+
+super + F12
+    light -A 5
+
